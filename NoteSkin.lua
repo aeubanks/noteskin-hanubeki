@@ -19,7 +19,7 @@ ret.RedirTable =
 	["UpRight"]   = game == "para"   and "ParaUpRight"                                or   "UpRight",  -- sPAT-
 	["DownLeft"]  =                                                                      "DownLeft",   -- oP-T-
 	["DownRight"] =                                                                      "DownRight",  -- oP-T-
-	["Center"]    = game == "techno" and "Circle"      or game == "smx" and "Diamond" or     "Center", -- -P-TX
+	["Center"]    = (game == "techno" or game == "horizon") and "Circle"      or game == "smx" and "Diamond" or     "Center", -- -P-TX
 	-- ez2, ds3ddx, Maniax
 	["FootDown"]      =                                    "Down",  -- 2--
 	["FootUpLeft"]    =                                  "UpLeft",  -- 23-
@@ -446,7 +446,7 @@ local function func()
 			InitCommand = function (self) self:rotationy(rotY):rotationz(rotZ) end,
 		}
 
-		if sButton == "Center" and (not string.find(GAMESTATE:GetCurrentStyle(pn):GetStepsType(), "StepsType_Smx_")) then
+		if sButton == "Center" and (not string.find(GAMESTATE:GetCurrentStyle(pn):GetStepsType(), "StepsType_Smx_")) and (not string.find(GAMESTATE:GetCurrentStyle(pn):GetStepsType(), "StepsType_Horizon_")) then
 			t[#t+1] = Def.Sprite {
 				Texture = NOTESKIN:GetPath("_common", "overlay feet"),
 				Frames = {{Frame = 0, Delay = 1}},
@@ -515,7 +515,7 @@ local function func()
 			NoneCommand = function (self) self:finishtweening():zoom(0.85):diffusealpha(0.9):linear(0.1):diffusealpha(1):zoom(1) end,
 		}
 
-		if sButton == "Center" and (not string.find(GAMESTATE:GetCurrentStyle(pn):GetStepsType(), "StepsType_Smx_")) then
+		if sButton == "Center" and (not string.find(GAMESTATE:GetCurrentStyle(pn):GetStepsType(), "StepsType_Smx_")) and (not string.find(GAMESTATE:GetCurrentStyle(pn):GetStepsType(), "StepsType_Horizon_")) then
 			t[#t+1] = Def.Sprite {
 				Texture = NOTESKIN:GetPath("_common", "overlay feet"),
 				Frames = {{Frame = 0, Delay = 1}},
